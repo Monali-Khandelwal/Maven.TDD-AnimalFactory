@@ -46,23 +46,40 @@ public class DogHouseTest {
     }
     @Test
     public void removeByIdTest(){
+        // Given
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog animal = AnimalFactory.createDog(name, birthDate);
+        DogHouse.clear();
+        DogHouse.add(animal);
 
-        Dog dog = new Dog(null, null,0);
-        DogHouse.add(dog);
-        DogHouse.remove(dog.getId());
-        int expected = 0;
-        int actual = DogHouse.getNumberOfDogs();
-        Assert.assertEquals(expected,actual);
+        // When
+        DogHouse.remove(animal.getId());
+
+        // Then
+        int actualNumberOfDogs = DogHouse.getNumberOfDogs();
+
+        Assert.assertEquals(0, actualNumberOfDogs);
     }
+
     @Test
     public void removeTest(){
-        Dog dog = new Dog(null,null,null);
-        DogHouse.add(dog);
-        DogHouse.remove(dog);
-        int expected = 0;
-        int actual = DogHouse.getNumberOfDogs();
-        Assert.assertEquals(expected, actual);
+        // Given
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog animal = AnimalFactory.createDog(name, birthDate);
+        DogHouse.clear();
+        DogHouse.add(animal);
+
+        // When
+        DogHouse.remove(animal);
+
+        // Then
+        int actualNumberOfDogs = DogHouse.getNumberOfDogs();
+
+        Assert.assertEquals(0, actualNumberOfDogs);
     }
+
     @Test
     public void getDogByIdTest(){
         Dog dog = new Dog(null,null,0);
