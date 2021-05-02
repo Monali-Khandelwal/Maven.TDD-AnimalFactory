@@ -55,12 +55,19 @@ public class CatHouseTest {
     }
     @Test
     public void removeTest(){
-        Cat cat = new Cat(null,null,null);
-        CatHouse.add(cat);
-        CatHouse.remove(cat);
-        int expected = 0;
-        int actual = CatHouse.getNumberOfCats();
-        Assert.assertEquals(expected, actual);
+        // Given
+        String name = "Kitty";
+        Date birthDate = new Date();
+        Cat animal = AnimalFactory.createCat(name, birthDate);
+        CatHouse.clear();
+
+        // When
+        CatHouse.add(animal);
+        CatHouse.remove(animal);
+
+        // Then
+        int actualNumberCats = CatHouse.getNumberOfCats();
+        Assert.assertEquals(0, actualNumberCats);
     }
     @Test
     public void getDogByIdTest(){
